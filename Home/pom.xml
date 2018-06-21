@@ -6,7 +6,6 @@
 	<groupId>com.ericardo.home</groupId>
 	<artifactId>Home</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
 
 	<name>Home</name>
 	<description>Real Estate Application that let&#39;s Realtors and Sellers post new properties</description>
@@ -114,4 +113,5 @@
 	</pluginRepositories>
 
 
+	<packaging>war</packaging>
 </project>

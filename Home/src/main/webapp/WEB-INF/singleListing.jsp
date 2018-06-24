@@ -10,17 +10,17 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<!-- bootstrap -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.min.css">
 		<!-- w3 -->
-		<link href="<c:url value="/resources/home/css/w3/w3.css" />" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/css/w3/w3.css">
 		<!-- font -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 		<!-- font-awesome -->
-		<link href="<c:url value="/resources/home/css/font-awesome/css/font-awesome.min.css" />" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome/css/font-awesome.min.css">
 		<!-- main stylesheet -->		
-		<link href="<c:url value="/resources/home/css/style.css" />" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/css/style.css">
 		<!-- favicon -->
-		<link rel="shortcut icon" type="image/png" href="/resources/home/img/dcHome_favico.png"/>
+		<link rel="shortcut icon" type="image/png" href="img/dcHome_favico.png"/>
 		<title>Listing for ${listing.address}</title>
 	</head>
 	
@@ -28,7 +28,7 @@
 	 	<!-- Navbar (sit on top) -->
 	 	<div class="w3-top">
             	<div class="w3-bar w3-white w3-card" id="myNavbar">
-                	<a href="/users/new" class="w3-bar-item w3-button w3-wide"><img alt="" src="/resources/home/img/homeLogo.png"></a>
+                	<a href="/" class="w3-bar-item w3-button w3-wide"><img alt="" src="/img/homeLogo.png"></a>
                 	<!-- Right-sided navbar links -->
                 	<div class="w3-right w3-hide-small">
                 		<!-- if usre is admin -->
@@ -297,11 +297,11 @@
 		</div>	
         
 		<!-- jquery 3.3.1-->
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	   	<!-- bootstrap-->
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	    <script type="text/javascript" src="/js/jquery.min.js"></script>
+	    <!-- bootstrap-->
+    	<script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
  		<!-- script js -->
- 		<script src="<c:url value="/resources/home/js/script.js" />"></script>
+ 		<script type="text/javascript" src="/js/script.js"></script>
         <!-- google API -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ-UwG2QhQze8fgx2B4KPAplCRT670Leo&callback=myMap"></script>
 	</body>

@@ -193,11 +193,13 @@ public class ListingController {
 		}
 			// File upload
 			if(!file.isEmpty()) {
+				System.out.println("Before Try ");
 				try {
 					byte[] bytes = file.getBytes();
-					
+					System.out.println("getBytes ");
 					// Creates the directory to store the file
 					File dir = new File("src/main/webapp/images/");
+					System.out.println("Creating the directory for images ");
 					if(!dir.exists())
 						dir.mkdir();
 					

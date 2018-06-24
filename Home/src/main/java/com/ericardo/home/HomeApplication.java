@@ -16,15 +16,15 @@ public class HomeApplication {
 	
 	/*********************************** DEPLOYMENT ******************************************/
 
-//    @Bean
-//    public EmbeddedServletContainerFactory servletContainer() {
-//        TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
-//        Connector ajpConnector = new Connector("AJP/1.3");
-//        ajpConnector.setPort(9090);
-//        ajpConnector.setSecure(false);
-//        ajpConnector.setAllowTrace(false);
-//        ajpConnector.setScheme("http");
-//        tomcat.addAdditionalTomcatConnectors(ajpConnector);
-//        return tomcat;
-//    }
+    @Bean
+    public EmbeddedServletContainerFactory servletContainer() {
+        TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
+        Connector ajpConnector = new Connector("AJP/1.3");
+        ajpConnector.setPort(9090);
+        ajpConnector.setSecure(false);
+        ajpConnector.setAllowTrace(false);
+        ajpConnector.setScheme("http");
+        tomcat.addAdditionalTomcatConnectors(ajpConnector);
+        return tomcat;
+    }
 }

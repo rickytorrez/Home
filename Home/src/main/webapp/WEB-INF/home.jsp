@@ -160,7 +160,7 @@
                 	<i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
             	<div class="w3-xlarge w3-section">
                 	<a href="https://www.facebook.com/Home-DC-689720904693989"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
-                	<i class="fa fa-instagram w3-hover-opacity"></i>
+                	<a href="https://www.instagram.com/DCHomeRealEstate"><i class="fa fa-instagram w3-hover-opacity"></i></a>
             	</div>
             	<p>Powered by
                 	<a href="https://ertorrez.com" title="W3.CSS" target="_blank" class="w3-hover-text-green">E. Ricardo Torrez</a>

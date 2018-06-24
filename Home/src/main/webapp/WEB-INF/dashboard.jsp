@@ -70,7 +70,7 @@
 	        	</c:if>
 	        	<!-- if there's a user in session, show logout -->
 	       	<c:if test="${user != null}">
-	        		<a href="/users/new" class="w3-bar-item w3-button"></i> LOG OUT</a>
+	        		<a href="/users/logout" class="w3-bar-item w3-button"></i> LOG OUT</a>
 	      	</c:if>
         	</nav>
         	

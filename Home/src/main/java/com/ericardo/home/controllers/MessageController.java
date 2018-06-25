@@ -16,11 +16,10 @@ public class MessageController {
 	@Autowired
 	private MessageService _mS;
 	
+	/********************************** POSTS A NEW MESSAGE **********************************/
+
 	@PostMapping("/new")
 	public String newMessage(@ModelAttribute("message") Message message) {
-		System.out.print("hitting message serv");
-		
-		
 		_mS.create(message);	
 		return "thankyou";
 	}

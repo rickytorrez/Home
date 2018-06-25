@@ -193,13 +193,10 @@ public class ListingController {
 		}
 			// File upload
 			if(!file.isEmpty()) {
-				System.out.println("Before Try ");
 				try {
 					byte[] bytes = file.getBytes();
-					System.out.println("getBytes ");
 					// Creates the directory to store the file
 					File dir = new File("src/main/webapp/images/");
-					System.out.println("Creating the directory for images ");
 					if(!dir.exists())
 						dir.mkdir();
 					
@@ -212,11 +209,8 @@ public class ListingController {
 					stream.close();
 					
 					// Adding it to the database
-					System.out.println("Is it reaching accross? ");
 					picture.setImage(file.getOriginalFilename());
 					picture.setUser(user);
-					System.out.println("Pic User: ");
-					System.out.println(picture.getUser());
 					picture.setListing(listing);
 					_pS.create(picture);
 					return "redirect:/listings/realtor";

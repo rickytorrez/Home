@@ -1,8 +1,0 @@
-INDEX VERSION 1.4+/Users/ricky/Documents/Coding/Portfolio/home/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-1964192570.index
-2982471477.index
-1551864439.index
-2492492162.index
-1871879331.index
-1052259646.index
-3989910663.index

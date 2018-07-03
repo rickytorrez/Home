@@ -33,7 +33,7 @@
                 	<div class="w3-right w3-hide-small">
                     	<a href="/listings" onclick="w3_close()" class="w3-bar-item w3-button" ></i>LISTINGS</a>
                     	<!-- Modal link for Log In-Reg -->
-                    	<a href="#" class="w3-bar-item w3-button" data-toggle="modal" data-target="#logInUser" ></i> LOG IN</a>
+                    	<a href="users/log" class="w3-bar-item w3-button"> LOG IN</a>
                 	</div>
                 
                 	<!-- Hide right-floated links on small screens and replace them with a menu icon -->

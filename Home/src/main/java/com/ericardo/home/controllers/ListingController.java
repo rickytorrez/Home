@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ericardo.home.models.Listing;
 import com.ericardo.home.models.Picture;
@@ -116,16 +117,22 @@ public class ListingController {
 	/********************************** CREATE LISTING ***************************************/
 	
 	@PostMapping("/createListing")
-	public String create(@Valid @ModelAttribute("listing") Listing listing, BindingResult _result, HttpSession _session, Model _model) {
+	public String create(@Valid @ModelAttribute("listing") Listing listing, BindingResult _result, HttpSession _session, Model _model, RedirectAttributes _flash) {
 		if(_session.getAttribute("id") == null ) {
-			return "redirect:/users/new";
-		}
-		
-		User user = _uS.find( (Long) _session.getAttribute("id") );
+			return "redirect:/listings";
+		} 
+		if(_result.hasErrors()) {
+			_flash.addFlashAttribute("errors", _result.getAllErrors());
+			return "realtor";
+		} else {
+
+			User user = _uS.find( (Long) _session.getAttribute("id") );
 		
 			listing.setUser(user);
 			_lS.create(listing);
-			return "redirect:/listings/realtor";		
+			return "redirect:/listings/realtor";	
+		}
+		
 	}
 	
 	/************************* DISPLAY SINGLE LISTING FOR REALTOR EDIT ***********************/
@@ -220,10 +227,11 @@ public class ListingController {
 			}
 			return "redirect:/listings";
 		}
-	/************************************** JOHN ROUTE  *************************************/
 	
-	@RequestMapping("/john")
-	public String johnHelped() {
-		return "jonathan";
-	}
+	/************************************* DELETE ROUTE  ************************************/
+//	@RequestMapping("/delete")
+//	public String deleteListing(HttpSession _session) {
+//		
+//	}
+	
 }

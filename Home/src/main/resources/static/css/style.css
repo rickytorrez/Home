@@ -31,6 +31,9 @@ body, html {
     margin-top:5px;
 }
 
-
-
-
+.centeredDiv{
+	margin: auto;
+    width: 100%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}

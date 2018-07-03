@@ -78,12 +78,21 @@ public class UserController {
 		return "home";
 	}
 	
+	/************************************* NEW USER PAGE *************************************/
+	@RequestMapping("/newUser")
+	public String newUser(HttpSession _session) {
+		if(_session.getAttribute("id") != null) {
+			return "redirect:/listings";
+		}
+		return "registerPage";
+	}
+	
 	/*************************************** POST NEW USER ***********************************/
 	@PostMapping("/new")
 	public String create(@Valid @ModelAttribute("user") User user, BindingResult _result, RedirectAttributes _flash, HttpSession _session) {
 		if(_result.hasErrors()) {
 			_flash.addFlashAttribute("errors", _result.getAllErrors());
-			return "redirect:/";
+			return "redirect:/users/newUser";
 		} else {
 			User exists = _uS.findByEmail(user.getEmail());		
 			
@@ -92,36 +101,34 @@ public class UserController {
 				_uS.login(_session, _user.getId());
 				return "redirect:/listings";
 			} else {
-				_flash.addFlashAttribute("error", "A user wtih this e-mail already exists.");
-				return "redirect:/";
+				_flash.addFlashAttribute("errors", "A user wtih this e-mail already exists.");
+				return "redirect:/users/newUser";
 			}
 		}
 	}
 	
 	/*************************************** LOGIN PAGE **************************************/
 	@RequestMapping("/log")
-	public String log() {
+	public String log(HttpSession _session) {
+		if(_session.getAttribute("id") != null) {
+			return "redirect:/listings";
+		}
 		return "loginPage";
 	}
 	
-	
-	
-	
-	
-
 	/*************************************** LOGIN USER **************************************/
 	@PostMapping("/login")
 	public String login(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession _session, RedirectAttributes _flash) {
 		if(email.length() < 1) {
 			_flash.addFlashAttribute("error", "E-mail cannot be blank.");
-			return "redirect:/";
+			return "redirect:/users/log";
 		}
 		
 		User user = _uS.findByEmail(email);
 		
 		if(user == null) {
 			_flash.addFlashAttribute("error", "No user with this e-mail found.");
-			return "redirect:/";
+			return "redirect:/users/log";
 		} else {
 			if(_uS.isMatch(password, user.getPassword())) {
 				_uS.login(_session, user.getId());
@@ -140,7 +147,7 @@ public class UserController {
 				}
 			} else {
 				_flash.addFlashAttribute("error", "Invalid Credentials");
-				return "redirect:/";
+				return "redirect:/users/log";
 			}
 		}
 	}

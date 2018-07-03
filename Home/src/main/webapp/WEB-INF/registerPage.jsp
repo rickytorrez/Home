@@ -21,17 +21,17 @@
 		<link rel="stylesheet" type="text/css" href="/css/style.css">
 		<!-- favicon -->
 		<link rel="shortcut icon" type="image/png" href="img/dcHome_favico.png"/>
-		<title>Realtor</title>
+		<title>Register</title>
 	</head>
 	
 	<body>
-	 	<!-- Navbar (sit on top) -->
+ 	 	<!-- Navbar (sit on top) -->
 	 	<div class="w3-top">
             	<div class="w3-bar w3-white w3-card" id="myNavbar">
                 	<a href="/" class="w3-bar-item w3-button w3-wide"><img alt="" src="/img/homeLogo.png"></a>
                 	<!-- Right-sided navbar links -->
                 	<div class="w3-right w3-hide-small">
-                		<!-- if usre is admin -->
+                		<!-- if user is admin -->
                 		<c:if test="${user.isAdmin() == true}">
                     		<a href="/users/dashboard" class="w3-bar-item w3-button"></i> ADMIN</a>
                     	</c:if>
@@ -49,11 +49,11 @@
                     	<c:if test="${user == null}">
 	                    	<!-- Modal link for Log In-Reg -->
 	                    	<a href="#" class="w3-bar-item w3-button" data-toggle="modal" data-target="#logInUser" ></i> LOG IN</a>
-	              	</c:if>
-	              	<!-- if there's a user in session, show logout -->
-	              	<c:if test="${user != null}">
-	              		<a href="/users/logout" class="w3-bar-item w3-button"></i> LOG OUT</a>
-	              	</c:if>
+	              		</c:if>
+		              	<!-- if there's a user in session, show logout -->
+		              	<c:if test="${user != null}">
+		              		<a href="/users/logout" class="w3-bar-item w3-button"></i> LOG OUT</a>
+		              	</c:if>
                 	</div>
                 
                 	<!-- Hide right-floated links on small screens and replace them with a menu icon -->
@@ -67,105 +67,75 @@
         	<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
             	<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
             	<!-- if user is admin -->
-           	<c:if test="${user.isAdmin() == true}">
-            		<a href="/users/dashboard" class="w3-bar-item w3-button"></i> ADMIN</a>
-          	</c:if>
-            	<!-- listings -->
-           	<a href="/listings" onclick="w3_close()" class="w3-bar-item w3-button">LISTINGS</a>
-            	<!-- if user is a buyer show favorites tab -->
-           	<c:if test="${user.isRealtor() == false}">
-            		<a href="/listings/favorites" class="w3-bar-item w3-button"></i> FAVORITES</a>
-            	</c:if>
-            	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
-       		<!-- if there's no user in session, show login -->
-           	<c:if test="${user == null}">
-	       		<a href="#" class="w3-bar-item w3-button" data-toggle="modal" data-target="#logInUser" ></i> LOG IN</a>
-	        	</c:if>
-	        	<!-- if there's a user in session, show logout -->
-	       	<c:if test="${user != null}">
-	        		<a href="/users/logout" class="w3-bar-item w3-button"></i> LOG OUT</a>
-	      	</c:if>
+	           	<c:if test="${user.isAdmin() == true}">
+	            		<a href="/users/dashboard" class="w3-bar-item w3-button"></i> ADMIN</a>
+	          	</c:if>
+	            	<!-- if user is realtor show realtor tab -->
+				<c:if test="${user.isRealtor() == true}">
+	         		<a href="/listings/realtor" class="w3-bar-item w3-button"></i> REALTOR</a>
+	            	</c:if>
+	            	<!-- if user is a buyer show favorites tab -->
+	           	<c:if test="${user.isRealtor() == false}">
+	            		<a href="/listings/favorites" class="w3-bar-item w3-button"></i> FAVORITES</a>
+	            	</c:if>
+	            	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+	       		<!-- if there's no user in session, show login -->
+	           	<c:if test="${user == null}">
+		       		<a href="#" class="w3-bar-item w3-button" data-toggle="modal" data-target="#logInUser" ></i> LOG IN</a>
+		        	</c:if>
+		        	<!-- if there's a user in session, show logout -->
+		       	<c:if test="${user != null}">
+		        		<a href="/users/logout" class="w3-bar-item w3-button"></i> LOG OUT</a>
+		      	</c:if>
         	</nav>
-
-			<!-- Realtor Dashboard -->
+        	
+        	<!-- Listing Section -->
         	<div class="w3-container" style="padding:100px 16px" id="listings">
-            	<h3 class="w3-center">Realtor Dashboard</h3>
-            	<p class="w3-center w3-large">Create or Edit Your Listings</p>
-
-            	<div class="w3-row-padding " style="margin-top:64px">
-            	
-            		<!-- Create a listing form -->
-                	<div class="w3-col l6 m6 w3-margin-bottom">
-                    	<div class="w3-card">
-                    		<div class="w3-container">
-                            	<h3>Create A Listing</h3>
-                            	
-                            	<c:forEach items="${errors}" var="err">
-	   								<p>${err.defaultMessage}</p>
-	    						</c:forEach>
-                            	
-                            	
-                            	
-                            	<p class="w3-opacity">Please fill out the form:</p>
-                            		<form:form method="POST" action="/listings/createListing" modelAttribute="listing">
-									<form:label path="address">Address:
-										<form:input path="address"></form:input>
-										<form:errors path="address"/>
-									</form:label><br>
-									
-									<form:label path="description">Description:
-										<form:input path="description"></form:input>
-										<form:errors path="description"/>
-									</form:label><br>
-									<form:label path="type">Type:
-										<form:select path="type">
-											<form:option value="Single-Family-House">Single Family House</form:option>
-											<form:option value="Town-House">Town House</form:option>
-											<form:option value="Apartment">Apartment</form:option>
-										</form:select>
-									</form:label><br>
-									<form:label path="yearbuilt">Built Year:
-										<form:input type="number" path="yearbuilt"></form:input>
-										<form:errors path="yearbuilt"/>
-									</form:label><br>
-									<form:label path="numberofrooms">Number of Bedrooms:
-										<form:input type="number" path="numberofrooms"></form:input>
-										<form:errors path="numberofrooms"/>
-									</form:label><br>
-									<form:label path="numberofbathrooms">Number of Bathrooms:
-										<form:input type="number" path="numberofbathrooms"></form:input>
-										<form:errors path="numberofbathrooms"/>
-									</form:label><br>
-									<form:label path="size">Size (Square Feet):
-										<form:input type="number" path="size"></form:input>
-										<form:errors path="size"/>
-									</form:label><br>
-									<form:label path="cost">Asking Price:
-										<form:input type="number" path="cost"></form:input>
-										<form:errors path="cost"/>
-									</form:label><br>
-									<input type="submit" value="Create Listing" class="btn btn-default"/>
-								</form:form>
-                        	</div>
-                    	</div>
-                	</div>
-                	
-                <!-- Listings posted by the realtor -->
-				<c:forEach items="${user.listings}" var="listing">
-	                	<div class="w3-col l6 m6 w3-margin-bottom">
-	                    	<div class="w3-card">
-	                        	<div class="w3-container">
-	                            	<h3>${ listing.address }</h3>
-	                            	<p class="w3-opacity"><a href="/listings/${listing.id}/edit"><button class="btn btn-default">Edit</button></a></p>
-	                            		
-	                        	</div>
-	                    	</div>
-	                	</div>
-             	</c:forEach>
+	            <h3 class="w3-center">REGISTER</h3>
+	            <p class="w3-center w3-large">Please fill out the form to create an account</p>
+			    
+			    <div class="w3-row-padding" style="margin-top:40px">
+					<div class="w3-col l3 m6 w3-margin-bottom">
+					</div>
+					<div class="w3-col l6 m12 w3-margin-bottom">
+	               		<div class="w3-card center">
+			    
+			        	<c:forEach items="${errors}" var="err">
+	   						<p>${err.defaultMessage}</p>
+	    				</c:forEach>
+	    				
+						<form action="/users/new" method="post">
+				 			<p>
+					 			<input class="w3-input w3-border" placeholder="First Name" type="text" name="firstname">
+				 			</p>
+				 			<p>
+					 			<input class="w3-input w3-border" placeholder="Last Name" type="text" name="lastname">
+				 			</p>
+				 			<p>
+					 			<input class="w3-input w3-border" placeholder="Username" type="text" name="username">
+				 			</p>
+				 			<p>
+					 			<input class="w3-input w3-border" placeholder="Email" type="text" name="email">
+				 			</p>
+				 			<p>
+					 			<input class="w3-input w3-border" placeholder="Password" type="password" name="password">
+				 			</p>
+				 			<p>
+					 			<select name="realtor" class="w3-input w3-border" placeholder="Option">
+					 				<option value="true">Realtor</option>
+					 				<option value="false">Buyer</option>
+					 			</select>
+				 			</p>
+				 			<input type="submit" class="btn btn-default" value="Register"/>
+				 		</form>
+	            	</div>
+					</div>
+					<div class="w3-col l3 m6 w3-margin-bottom">
+					</div>
+				</div>
 			</div>
-		</div>
 		
-			<!-- Contact Section -->
+		<!-- Contact Section -->
         	<div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
             	<h3 class="w3-center">CONTACT</h3>
             	<p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
@@ -215,7 +185,8 @@
                 	<a href="https://ertorrez.com" title="W3.CSS" target="_blank" class="w3-hover-text-green">E. Ricardo Torrez</a>
             	</p>
         	</footer>
-        	
+			
+			
 		<!-- jquery 3.3.1-->
 	    <script type="text/javascript" src="/js/jquery.min.js"></script>
 	    <!-- bootstrap-->
@@ -223,6 +194,6 @@
  		<!-- script js -->
  		<script type="text/javascript" src="/js/script.js"></script>
         <!-- google API -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ-UwG2QhQze8fgx2B4KPAplCRT670Leo&callback=myMap"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ-UwG2QhQze8fgx2B4KPAplCRT670Leo&callback=myMap"></script>	
 	</body>
 </html>

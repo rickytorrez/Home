@@ -100,7 +100,7 @@
             		<!-- Listing Picture Section (Left) -->
                 	<div class="w3-col l6 m6 w3-margin-bottom">
                     	<div class="w3-card">
-                    		<c:if test="${listing.getPictures().size() > 0 }">
+                    	<c:if test="${listing.getPictures().size() > 0 }">
 				 			<img class="img-gallery" src="/images/${listing.getPictures().get(0).image}" alt="${listing.getPictures().get(0)}" style="width:100%">
 			 			</c:if>
 						<c:if test="${listing.getPictures().size() > 1 }">
@@ -149,12 +149,11 @@
 					<!-- Listing Picture Section (Right) -->
                 	<div class="w3-col l6 m6 w3-margin-bottom">
                     	<div class="w3-card">
-						<c:if test="${listing.getPictures().size() > 3 }">
-				 			<img src="/images/${listing.getPictures().get(4).image}" alt="${listing.getPictures().get(4)}" style="width:100%">
+                    	
+                    	<c:if test="${listing.getPictures().size() > 3 }">
+				 			<img class="img-gallery" src="/images/${listing.getPictures().get(4).image}" alt="${listing.getPictures().get(4)}" style="width:100%">
 			 			</c:if>
-			 			<c:if test="${listing.getPictures().size() > 4 }">
-				 			<img class="img-gallery-1" src="/images/${listing.getPictures().get(5).image}" alt="${listing.getPictures().get(5)}" style="width:100%">
-			 			</c:if>
+
                     	</div>
                 	</div>
 			</div>

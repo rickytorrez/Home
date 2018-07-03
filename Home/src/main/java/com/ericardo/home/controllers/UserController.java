@@ -97,6 +97,17 @@ public class UserController {
 			}
 		}
 	}
+	
+	/*************************************** LOGIN PAGE **************************************/
+	@RequestMapping("/log")
+	public String log() {
+		return "loginPage";
+	}
+	
+	
+	
+	
+	
 
 	/*************************************** LOGIN USER **************************************/
 	@PostMapping("/login")

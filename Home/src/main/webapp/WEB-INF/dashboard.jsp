@@ -55,22 +55,22 @@
             	<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
             	<!-- if user is realtor show realtor tab -->
 			<c:if test="${user.isRealtor() == true}">
-         		<a href="/listings/realtor" class="w3-bar-item w3-button"></i> REALTOR</a>
+         		<a href="/listings/realtor" class="w3-bar-item w3-button">REALTOR</a>
             	</c:if>
             	<!-- if user is a buyer show favorites tab -->
             	<!-- listings -->
            	<a href="/listings" onclick="w3_close()" class="w3-bar-item w3-button">LISTINGS</a>
            	<c:if test="${user.isRealtor() == false}">
-            		<a href="/listings/favorites" class="w3-bar-item w3-button"></i> FAVORITES</a>
+            		<a href="/listings/favorites" class="w3-bar-item w3-button">FAVORITES</a>
             	</c:if>
             	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
        		<!-- if there's no user in session, show login -->
            	<c:if test="${user == null}">
-	       		<a href="#" class="w3-bar-item w3-button" data-toggle="modal" data-target="#logInUser" ></i> LOG IN</a>
+	       		<a href="#" class="w3-bar-item w3-button" data-toggle="modal" data-target="#logInUser" >LOG IN</a>
 	        	</c:if>
 	        	<!-- if there's a user in session, show logout -->
 	       	<c:if test="${user != null}">
-	        		<a href="/users/logout" class="w3-bar-item w3-button"></i> LOG OUT</a>
+	        		<a href="/users/logout" class="w3-bar-item w3-button">LOG OUT</a>
 	      	</c:if>
         	</nav>
         	

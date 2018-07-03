@@ -211,6 +211,11 @@
 		          	<h4 class="modal-title">Register:</h4>
 					</div>
 			        	<div class="modal-body">
+			        	<!-- TEST -->
+			        	<c:forEach items="${errors}" var="err">
+	   						<p>${err.defaultMessage}</p>
+	    				</c:forEach>
+			        	<!-- TEST -->
 						<form action="/users/new" method="post">
 				 			<p>
 					 			<label>First Name</label>

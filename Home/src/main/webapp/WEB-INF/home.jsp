@@ -31,7 +31,7 @@
                 	<a href="/" class="w3-bar-item w3-button w3-wide"><img alt="" src="/img/homeLogo.png"></a>
                 	<!-- Right-sided navbar links -->
                 	<div class="w3-right w3-hide-small">
-                    	<a href="/listings" onclick="w3_close()" class="w3-bar-item w3-button" ></i>LISTINGS</a>
+                    	<a href="/listings" onclick="w3_close()" class="w3-bar-item w3-button" > LISTINGS</a>
                     	<!-- Modal link for Log In-Reg -->
                     	<a href="users/log" class="w3-bar-item w3-button"> LOG IN</a>
                 	</div>
@@ -47,7 +47,7 @@
         	<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
             	<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
             	<a href="/listings" onclick="w3_close()" class="w3-bar-item w3-button">LISTINGS</a>
-            	<a href="/users/log" class="w3-bar-item w3-button">LOG IN</a>
+            	<a href="/users/log" onclick="w3_close()" class="w3-bar-item w3-button">LOG IN</a>
             	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
         	</nav>
 

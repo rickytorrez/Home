@@ -44,27 +44,10 @@
         	<!-- Mobile Menu -->
         	<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
             	<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-            	<!-- if user is admin -->
-	           	<c:if test="${user.isAdmin() == true}">
-	            		<a href="/users/dashboard" class="w3-bar-item w3-button"></i> ADMIN</a>
-	          	</c:if>
-	            	<!-- if user is realtor show realtor tab -->
-				<c:if test="${user.isRealtor() == true}">
-	         		<a href="/listings/realtor" class="w3-bar-item w3-button"></i> REALTOR</a>
-	            	</c:if>
-	            	<!-- if user is a buyer show favorites tab -->
-	           	<c:if test="${user.isRealtor() == false}">
-	            		<a href="/listings/favorites" class="w3-bar-item w3-button"></i> FAVORITES</a>
-	            	</c:if>
-	            	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
-	       		<!-- if there's no user in session, show login -->
-	           	<c:if test="${user == null}">
-		       		<a href="#" class="w3-bar-item w3-button" data-toggle="modal" data-target="#logInUser" ></i> LOG IN</a>
-		        	</c:if>
-		        	<!-- if there's a user in session, show logout -->
-		       	<c:if test="${user != null}">
-		        		<a href="/users/logout" class="w3-bar-item w3-button"></i> LOG OUT</a>
-		      	</c:if>
+            	<!-- listings -->
+           		<a href="/listings" onclick="w3_close()" class="w3-bar-item w3-button">LISTINGS</a>
+           		<!-- contact -->
+	            <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
         	</nav>
         	
         	<!-- Listing Section -->

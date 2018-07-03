@@ -27,7 +27,6 @@ public class RouteController {
 	public String index(HttpServletRequest _request, HttpSession _session, Model _model) {
 		if(!_uS.isValid(_session)) {
 			_model.addAttribute("allListings", _lS.all());
-			System.out.println("Test1");
 			return "home";
 		} else {
 			User user = _uS.find((Long) _session.getAttribute("id"));

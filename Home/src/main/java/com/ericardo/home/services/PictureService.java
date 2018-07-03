@@ -1,6 +1,7 @@
 package com.ericardo.home.services;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,10 @@ public class PictureService {
 	
 	public void destroy(Long id) {
 		_pR.delete(id);
+	}
+	
+	public void destroyAll(List<Picture> pictures) {
+		_pR.delete(pictures);
 	}
 	
 	public ArrayList<Picture> all(){

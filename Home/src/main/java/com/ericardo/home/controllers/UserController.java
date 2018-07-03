@@ -162,7 +162,7 @@ public class UserController {
 	
 	/*************************************** ADMIN SIDE **************************************/
 	/*************************************** ADMIN DASHBOARD *********************************/
-	@RequestMapping("dashboard")
+	@RequestMapping("/dashboard")
 	public String dashboard(Model _model, HttpSession _session) {
 		if(!_uS.isValid(_session)) 
 			return "redirect:/";
@@ -175,4 +175,12 @@ public class UserController {
 		_model.addAttribute("messages", _mS.all());
 		return "dashboard";
 	}
+
+	/************************************** WHY MODULARIZE ***********************************/
+	/*************************************** OLD LANDING *************************************/
+	@RequestMapping("/oldHome")
+	public String oldHome() {
+		return "oldHome";
+	}
+	
 }

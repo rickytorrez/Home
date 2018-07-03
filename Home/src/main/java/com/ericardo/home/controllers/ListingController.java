@@ -144,6 +144,7 @@ public class ListingController {
 			_model.addAttribute("user", user);
 		}
 		_model.addAttribute("listing", _lS.find(id));
+		_model.addAttribute("pictures", listing.getPictures());
 		return "editListing";
 	}
 	
@@ -228,10 +229,31 @@ public class ListingController {
 			return "redirect:/listings";
 		}
 	
-	/************************************* DELETE ROUTE  ************************************/
-//	@RequestMapping("/delete")
-//	public String deleteListing(HttpSession _session) {
-//		
-//	}
+	/************************************ DELETE PICTURE  ***********************************/
+	@RequestMapping("/picture/{id}/delete")
+	public String deletePicture(@PathVariable("id") Long id, HttpSession _session) {
+		
+		System.out.println("Delete route for: ");
+		System.out.println(id);
+		
+		_pS.destroy(id);
+		return "redirect:/realtor";
+	}
+	
+	/************************************ DELETE PICTURE  ***********************************/
+	@RequestMapping("/{id}/delete")
+	public String deleteListing(@PathVariable("id") Long id, HttpSession _session) {
+		
+		System.out.println("Delete route for listing: ");
+		System.out.println(id);
+		
+		// Gets all pictures that belong to the specific listing
+		List<Picture> pictures = _lS.find(id).getPictures();
+		
+		_pS.destroyAll(pictures);
+		_lS.destroy(id);
+		
+		return "redirect:/realtor";
+	}	
 	
 }

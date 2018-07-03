@@ -31,31 +31,9 @@
                 	<a href="/" class="w3-bar-item w3-button w3-wide"><img alt="" src="/img/homeLogo.png"></a>
                 	<!-- Right-sided navbar links -->
                 	<div class="w3-right w3-hide-small">
-                		<!-- if user is admin -->
-                		<c:if test="${user.isAdmin() == true}">
-                    		<a href="/users/dashboard" class="w3-bar-item w3-button"></i> ADMIN</a>
-                    	</c:if>
-                    	<!-- if user is a buyer show favorites tab -->
-                    	<c:if test="${user.isRealtor() == false}">
-                    		<a href="/listings/favorites" class="w3-bar-item w3-button"></i> FAVORITES</a>
-                    	</c:if>
                     	<!-- listings route -->
-                    	<a href="/listings" onclick="w3_close()" class="w3-bar-item w3-button" ></i>LISTINGS</a>
-                    	<!-- if user is realtor show realtor tab -->
-                    	<c:if test="${user.isRealtor() == true}">
-                    		<a href="/listings/realtor" class="w3-bar-item w3-button"></i> REALTOR</a>
-                    	</c:if>
-                    	<!-- if there's no user in session, show login -->
-                    	<c:if test="${user == null}">
-	                    	<!-- Modal link for Log In-Reg -->
-	                    	<a href="#" class="w3-bar-item w3-button" data-toggle="modal" data-target="#logInUser" ></i> LOG IN</a>
-	              		</c:if>
-		              	<!-- if there's a user in session, show logout -->
-		              	<c:if test="${user != null}">
-		              		<a href="/users/logout" class="w3-bar-item w3-button"></i> LOG OUT</a>
-		              	</c:if>
+                    	<a href="/listings" onclick="w3_close()" class="w3-bar-item w3-button" > LISTINGS</a>
                 	</div>
-                
                 	<!-- Hide right-floated links on small screens and replace them with a menu icon -->
                 	<a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
                     	<i class="fa fa-bars"></i>
@@ -161,7 +139,7 @@
 
         	<!-- Footer -->
         	<footer class="w3-center w3-black w3-padding-64">
-            	<a href="#home" class="w3-button w3-light-grey">
+            	<a href="#listings" class="w3-button w3-light-grey">
                 	<i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
             	<div class="w3-xlarge w3-section">
                 	<a href="https://www.facebook.com/Home-DC-689720904693989"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>

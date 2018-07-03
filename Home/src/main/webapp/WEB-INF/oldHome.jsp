@@ -20,7 +20,7 @@
 		<!-- main stylesheet -->		
 		<link rel="stylesheet" type="text/css" href="/css/style.css">
 		<!-- favicon -->
-		<link rel="icon" type="image/png" href="img/dcHome_favico.png"/>
+		<link rel="shortcut icon" type="image/png" href="img/dcHome_favico.png"/>
 		<title>Home</title>
 	</head>
 	
@@ -33,7 +33,7 @@
                 	<div class="w3-right w3-hide-small">
                     	<a href="/listings" onclick="w3_close()" class="w3-bar-item w3-button" ></i>LISTINGS</a>
                     	<!-- Modal link for Log In-Reg -->
-                    	<a href="users/log" class="w3-bar-item w3-button"> LOG IN</a>
+                    	<a href="#" class="w3-bar-item w3-button" data-toggle="modal" data-target="#logInUser" > LOG IN</a>
                 	</div>
                 
                 	<!-- Hide right-floated links on small screens and replace them with a menu icon -->
@@ -47,7 +47,7 @@
         	<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
             	<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
             	<a href="/listings" onclick="w3_close()" class="w3-bar-item w3-button">LISTINGS</a>
-            	<a href="/users/log" class="w3-bar-item w3-button">LOG IN</a>
+            	<a href="#" data-toggle="modal" data-target="#logInUser" onclick="w3_close()" class="w3-bar-item w3-button">LOG IN</a>
             	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
         	</nav>
 
@@ -167,6 +167,95 @@
             	</p>
         	</footer>
         	
+        	<!-- Log-In Modal -->
+			<div class="modal fade" id="logInUser" role="dialog">
+	    		<div class="modal-dialog">
+	    
+		    		<!-- Modal content-->
+		      	<div class="modal-content">
+		        		<div class="modal-header">
+		          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+		          	<h4 class="modal-title">Login:</h4>
+					</div>
+			        	<div class="modal-body">
+			          	<form action="/users/login" method="post">
+			 				<p>
+			 					<label>Email
+			 						<input type="text" required name="email"/>
+			 					</label>		
+			 				</p>
+			 				<p>
+			 					<label>Password	
+			 						<input type="password" required name="password"/>
+			 					</label>		
+			 				</p>
+			 				<input type="submit" class="btn btn-default" value="Login"/>
+			 			</form> 
+			        	</div>
+			        	<div class="modal-footer">
+			        		<button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#registerUser">Register</button>
+			          	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        	</div>
+				</div>
+			</div>
+		</div>
+	
+	  	<!-- Register Modal -->
+		<div class="modal fade" id="registerUser" role="dialog">
+	    		<div class="modal-dialog">
+	    
+		    		<!-- Modal content-->
+		      	<div class="modal-content">
+		        		<div class="modal-header">
+		          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+		          	<h4 class="modal-title">Register:</h4>
+					</div>
+			        	<div class="modal-body">
+			        	<!-- TEST -->
+			        	<c:forEach items="${errors}" var="err">
+	   						<p>${err.defaultMessage}</p>
+	    				</c:forEach>
+			        	<!-- TEST -->
+						<form action="/users/new" method="post">
+				 			<p>
+					 			<label>First Name</label>
+					 			<input type="text" required name="firstname">
+				 			</p>
+				 			<p>
+					 			<label>Last Name</label>
+					 			<input type="text" required name="lastname">
+				 			</p>
+				 			<p>
+					 			<label>Username</label>
+					 			<input type="text" required name="username">
+				 			</p>
+				 			<p>
+					 			<label>E-mail</label>
+					 			<input type="text" required name="email">
+				 			</p>
+				 			<p>
+					 			<label>Password</label>
+					 			<input type="password" required name="password">
+				 			</p>
+				 			<p>
+					 			<label>Option</label>
+					 			<select name="realtor">
+					 				<option value="true">Realtor</option>
+					 				<option value="false">Buyer</option>
+					 			</select>
+				 			</p>
+				 			<input type="submit" class="btn btn-default" value="Register"/>
+				 		</form>
+			          	
+			          	
+			        	</div>
+			        	<div class="modal-footer">
+			          	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        	</div>
+				</div>
+			</div>
+		</div>	
+        
 		<!-- jquery 3.3.1-->
 	    <script type="text/javascript" src="/js/jquery.min.js"></script>
 	    <!-- bootstrap-->
